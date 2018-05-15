@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+  <p v-once v-on:click="changeMessage1">{{ message1 }}</p>
+  <p v-on:click="changeMessage2">{{ message2 }}</p>
+</div>
+
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      message1: '这里使用了v-once, 执行一次性插值不改变, 点击没有效果',
+      message2: '这里没有使用, 点击可以改变'
+    },
+    created: function () {
+      console.log(this.message);
+    },
+    methods: {
+      changeMessage1: function () {
+        this.message1 = '改变了一次!'
+      },
+      changeMessage2: function () {
+        this.message2 = '改变了一次!'
+      }
+    }
+  })
+</script>
+</body>
+</html>
